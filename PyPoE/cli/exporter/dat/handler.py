@@ -30,6 +30,7 @@ See PyPoE/LICENSE
 # =============================================================================
 
 # Python
+import traceback
 
 # 3rd-party
 from tqdm import tqdm
@@ -41,6 +42,7 @@ from PyPoE.cli.core import console, Msg
 from PyPoE.cli.exporter import config
 from PyPoE.cli.exporter.util import get_content_path
 from PyPoE.poe.file.file_system import FileSystem
+from PyPoE.poe.file.specification.errors import SpecificationError
 
 # =============================================================================
 # Globals
@@ -132,7 +134,11 @@ class DatExportHandler:
 
             df = dat.DatFile(name)
 
-            df.read(file_path_or_raw=data, use_dat_value=False)
+            try:
+                df.read(file_path_or_raw=data, use_dat_value=False)
+            except SpecificationError:
+                print(traceback.format_exc())
+                remove.append(name)
 
             dat_files[name] = df
 
