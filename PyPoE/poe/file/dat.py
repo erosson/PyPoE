@@ -773,7 +773,7 @@ class DatReader(ReprMixin):
     def _process_row(self, rowid):
         offset = 4 + rowid * self.table_record_length
         row_data = DatRecord(self, rowid)
-        data_raw = self._file_raw[offset:offset+self.table_record_length]
+        data_raw = self._file_raw[offset:offset+self.cast_size]
 
         # We don't have any data, return early
         if len(data_raw) == 0:
@@ -830,15 +830,29 @@ class DatReader(ReprMixin):
         if self.specification is None:
             self.cast_size = self.table_record_length
 
-        if self.cast_size != self.table_record_length:
+        # If we haven't specified the last few columns of the table, ignore them.
+        # This makes spec errors harder to detect than a simple inequality check
+        # - but allows us to output *something* when a poe patch adds a column
+        # (very common). You could get a similar effect by padding the end of
+        # the spec with "unknownXX" fields.
+        #
+        # We still fail here if the spec is too *large*; deleted fields must be
+        # specced manually. It seems we fail later in some cases too, when
+        # columns change in incompatible ways.
+        #
+        # TODO: CLI flag for this behavior!
+        if self.cast_size > self.table_record_length:
             raise SpecificationError(
                 SpecificationError.ERRORS.RUNTIME_ROWSIZE_MISMATCH,
-                '"%(name)s": Specification row size %(spec_size)s vs real size %(cast_size)s' % {
+                '"%(name)s": Specification row size %(spec_size)s vs real size %(real_size)s' % {
                     'name': self.file_name,
                     'spec_size': self.cast_size,
-                    'cast_size': self.table_record_length
+                    'real_size': self.table_record_length
                 }
             )
+
+        # if self.cast_size != self.table_record_length:
+            # print(self.file_name, {'spec_size': self.cast_size, 'real_size': self.table_record_length}, flush=True)
 
         self.table_data = []
 

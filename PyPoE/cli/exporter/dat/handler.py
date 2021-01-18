@@ -42,7 +42,6 @@ from PyPoE.cli.core import console, Msg
 from PyPoE.cli.exporter import config
 from PyPoE.cli.exporter.util import get_content_path
 from PyPoE.poe.file.file_system import FileSystem
-from PyPoE.poe.file.specification.errors import SpecificationError
 
 # =============================================================================
 # Globals
@@ -113,7 +112,7 @@ class DatExportHandler:
         console(prefix + 'Loading file system...')
 
         file_system = FileSystem(root_path=path)
-        
+
         console(prefix + 'Reading .dat files')
 
         dat_files = {}
@@ -136,8 +135,8 @@ class DatExportHandler:
 
             try:
                 df.read(file_path_or_raw=data, use_dat_value=False)
-            except SpecificationError:
-                print(traceback.format_exc())
+            except Exception:
+                print(name, traceback.format_exc())
                 remove.append(name)
 
             dat_files[name] = df
