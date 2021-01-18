@@ -1949,14 +1949,6 @@ specification = Specification({
                 type='int',
             ),
             Field(
-                name='X',
-                type='float',
-            ),
-            Field(
-                name='Y',
-                type='float',
-            ),
-            Field(
                 name='DDSFile',
                 type='ref|string',
                 file_path=True,
