@@ -457,6 +457,15 @@ specification = Specification({
                 file_path=True,
                 file_ext='.ai',
             ),
+            # TODO 3.13
+            Field(
+                name='Unknown2',
+                type='int',
+            ),
+            Field(
+                name='Unknown3',
+                type='int',
+            ),
         ),
     ),
     'AddBuffToTargetVarieties.dat': File(
@@ -11637,6 +11646,15 @@ specification = Specification({
                 name='Flag4',
                 type='bool',
             ),
+            # TODO 3.13
+            Field(
+                name='Unknown3',
+                type='int',
+            ),
+            Field(
+                name='Flag5',
+                type='bool',
+            ),
         ),
     ),
     'ItemCostPerLevel.dat': File(
@@ -15062,6 +15080,11 @@ specification = Specification({
                 name='Heist_AddStatValue2',
                 type='int',
             ),
+            # TODO 3.13
+            Field(
+                name='Unknown4',
+                type='int',
+            ),
         ),
         virtual_fields=(
             VirtualField(
@@ -16474,6 +16497,11 @@ specification = Specification({
                 name='Key3',
                 type='ulong',
             ),
+            # TODO 3.13
+            Field(
+                name='Flag6',
+                type='byte',
+            ),
         ),
     ),
     'MoveDaemon.dat': File(
@@ -17041,6 +17069,15 @@ specification = Specification({
                 name='Unknown1',
                 type='int',
             ),
+            # TODO 3.13
+            Field(
+                name='Unknown2',
+                type='int',
+            ),
+            Field(
+                name='Unknown3',
+                type='int',
+            ),
         ),
     ),
     'NPCShop.dat': File(
@@ -17086,6 +17123,11 @@ specification = Specification({
             ),
             Field(
                 name='Unknown2',
+                type='int',
+            ),
+            # TODO 3.13
+            Field(
+                name='Unknown3',
                 type='int',
             ),
         ),
@@ -17361,6 +17403,15 @@ specification = Specification({
                 name='PortraitFile',
                 type='ref|string',
                 file_path=True,
+            ),
+            # TODO 3.13
+            Field(
+                name='Unknown4',
+                type='int',
+            ),
+            Field(
+                name='Unknown5',
+                type='int',
             ),
         ),
     ),
@@ -17944,6 +17995,11 @@ specification = Specification({
                 name='IsProxyPassive',
                 type='byte',
             ),
+            # TODO 3.13
+            Field(
+                name='Unknown1',
+                type='int',
+            ),
         ),
         virtual_fields=(
             VirtualField(
@@ -18403,6 +18459,15 @@ specification = Specification({
             ),
             Field(
                 name='Unknown13',
+                type='int',
+            ),
+            # TODO 3.13
+            Field(
+                name='Unknown14',
+                type='int',
+            ),
+            Field(
+                name='Unknown15',
                 type='int',
             ),
         ),
@@ -18933,6 +18998,11 @@ specification = Specification({
             ),
             Field(
                 name='Rank',
+                type='int',
+            ),
+            # TODO 3.13
+            Field(
+                name='Unknown0',
                 type='int',
             ),
         ),
@@ -20138,6 +20208,15 @@ specification = Specification({
             Field(
                 name='Flag10',
                 type='bool',
+            ),
+            # TODO 3.13
+            Field(
+                name='Unknown2',
+                type='int',
+            ),
+            Field(
+                name='Unknown3',
+                type='int',
             ),
         ),
     ),
